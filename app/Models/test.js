@@ -9,8 +9,20 @@ const testSchema = new mongoose.Schema(
     body: {
       type: String,
       required: true
+    },
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  }, {
+    timestamps: true,
+    toObject: {
+      transform: (_doc, user) => {
+        delete user.hashedPassword
+        return user
+      }
     }
   }
 )
 
-module.exports = mongoose.model('Thing', thingSchema)
+module.exports = mongoose.model('Thing', testSchema)
