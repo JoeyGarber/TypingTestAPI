@@ -29,7 +29,7 @@ const router = express.Router()
 // GET /tests
 router.get('/tests', requireToken, (req, res, next) => {
   // Probably want to do: Test.find({ owner: req.user.id })
-  Test.find({ owner: req.user.id })
+  Test.find({ $or: [{owner: req.user.id }, {owner: null}]})
   .then((tests) => {
     // 'tests' is going to be an array of Mongoose documents
     // we want to convert each one to a POJO, so we use '.map' to apply
@@ -76,7 +76,7 @@ router.post('/tests', requireToken, (req, res, next) => {
 
 // UPDATE
 // PATCH /tests/432jfdskafja
-router.patch('/tests/:id', requireToken, (req, res, next) => {
+router.patch('/tests/:id', requireToken, removeBlanks, (req, res, next) => {
   // make sure the client doesn't update the owner property by deleting that
   delete req.body.test.owner
 
@@ -101,13 +101,13 @@ router.patch('/tests/:id', requireToken, (req, res, next) => {
 
 // DESTROY
 // DELETE /tests/432jfdskafja
-router.delete('/tests/432jfdskafja', requireToken, (req, res, next) => {
+router.delete('/tests/:id', requireToken, (req, res, next) => {
   Test.findById(req.params.id)
   .then(handle404)
   .then(test => {
     requireOwnership(req, test)
 
-    restaurant.deleteOne()
+    test.deleteOne()
   })
   .then(() => res.sendStatus(204))
   .catch(next)

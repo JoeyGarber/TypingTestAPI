@@ -22,6 +22,10 @@ const seedTests = [
   {
     title: 'Rules of Baseball',
     body: 'Baseball has no rules. It is a chaos sport.'
+  },
+  {
+    title: 'The seeding worked',
+    body: 'Test if it is getting teh tests from the API'
   }
 ]
 
