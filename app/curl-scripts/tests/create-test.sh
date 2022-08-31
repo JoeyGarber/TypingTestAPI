@@ -4,7 +4,7 @@
 
 TITLE="Curl script 2"
 DESCRIPTION="Test"
-TOKEN="49be1762d238f80ccace150b0797e9b2"
+TOKEN="fd5e06b20972cb887e00b6013d56159b"
 API="http://localhost:4741"
 URL_PATH="/tests"
 

@@ -25,7 +25,7 @@ const seedTests = [
   },
   {
     title: 'The seeding worked',
-    body: 'Test if it is getting teh tests from the API'
+    body: 'Test if it is getting the tests from the API'
   }
 ]
 

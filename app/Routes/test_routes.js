@@ -27,9 +27,9 @@ const router = express.Router()
 
 // INDEX
 // GET /tests
-router.get('/tests', requireToken, (req, res, next) => {
+router.get('/tests', (req, res, next) => {
   // Probably want to do: Test.find({ owner: req.user.id })
-  Test.find({ $or: [{owner: req.user.id }, {owner: null}]})
+  Test.find({ owner: null })
   .then((tests) => {
     // 'tests' is going to be an array of Mongoose documents
     // we want to convert each one to a POJO, so we use '.map' to apply
@@ -39,6 +39,15 @@ router.get('/tests', requireToken, (req, res, next) => {
   // respond with 200 and JSON of the tests
   .then((tests) => res.status(200).json({ tests: tests }))
   // if there's an error, catch it
+  .catch(next)
+})
+
+router.get('/user-tests', requireToken, (req, res, next) => {
+  Test.find({ owner: req.user.id })
+  .then((tests) => {
+    return tests.map((test) => test.toObject())
+  })
+  .then((tests) => res.status(200).json({ tests: tests }))
   .catch(next)
 })
 
