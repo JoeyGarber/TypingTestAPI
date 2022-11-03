@@ -43,8 +43,17 @@ router.post('/results', requireToken, (req, res, next) => {
   .catch(next)
 })
 
-
-
+// RETRIEVE USER SCORES
+// GET
+router.get('/results', requireToken, (req, res, next) => {
+  User.findById(req.user.id)
+  .populate('results.Test')
+  .then(handle404)
+  .then(user => {
+    res.status(200).json({ results: user.toObject().results })
+  })
+  .catch(next)
+})
 
 
 module.exports = router

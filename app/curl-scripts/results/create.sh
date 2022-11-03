@@ -1,7 +1,7 @@
 API="http://localhost:4741"
 URL_PATH="/results"
-TOKEN="46bad51a0d66e06dce4d932717b540ca"
-TESTID="63641fff8aa9cf42f208cea8"
+TOKEN="48840851ebd584693f83b2508cca1e8d"
+TESTID="63641fff8aa9cf42f208cea9"
 WPM="60"
 ACCURACY="100"
 
