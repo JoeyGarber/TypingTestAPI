@@ -53,7 +53,7 @@ router.get('/user-tests', requireToken, (req, res, next) => {
 
 // SHOW
 // GET /tests/432jfdskafja
-router.get('/tests/:id', requireToken, (req, res, next) => {
+router.get('/tests/:id', (req, res, next) => {
   // req.params.id will be set based on the :id in the route
   Test.findById(req.params.id)
   // if I don't find anything, handle the 404 error
