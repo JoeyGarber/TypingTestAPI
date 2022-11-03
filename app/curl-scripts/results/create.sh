@@ -1,9 +1,9 @@
 API="http://localhost:4741"
 URL_PATH="/results"
-TOKEN="f66f27fe5305eeffae56aa5cfa6afe88"
-TESTID="6364078758e5d1095179058b"
-WPM=50
-ACCURACY=100
+TOKEN="46bad51a0d66e06dce4d932717b540ca"
+TESTID="63641fff8aa9cf42f208cea8"
+WPM="60"
+ACCURACY="100"
 
 curl "${API}${URL_PATH}" \
   --include \

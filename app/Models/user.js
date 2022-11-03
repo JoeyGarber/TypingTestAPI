@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const resultSchema = require('./results.js')
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -10,6 +11,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  results: [resultSchema],
   token: String
 }, {
   timestamps: true,

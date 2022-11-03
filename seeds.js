@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const Test = require('./app/models/test')
+const Test = require('./app/Models/test')
+const User = require('./app/Models/user')
 
 const db = require('./config/db')
 
@@ -31,6 +32,7 @@ const seedTests = [
 
 const seedDB = async () => {
   await Test.deleteMany({})
+  await User.deleteMany({})
   await Test.insertMany(seedTests)
 }
 
