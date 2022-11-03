@@ -47,6 +47,7 @@ router.post('/results', requireToken, (req, res, next) => {
 // GET
 router.get('/results', requireToken, (req, res, next) => {
   User.findById(req.user.id)
+  // This populates within the subschema
   .populate('results.Test')
   .then(handle404)
   .then(user => {
