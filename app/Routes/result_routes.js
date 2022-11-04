@@ -56,5 +56,20 @@ router.get('/results', requireToken, (req, res, next) => {
   .catch(next)
 })
 
+// DESTROY BASED ON TEST
+// DELETE /results/432jfdskafja
+router.delete('/results/:id', requireToken, (req, res, next) => {
+  User.findById(req.user.id)
+    .then(handle404)
+    .then(user => {
+      user.results = user.results.filter(result => result.Test != req.params.id)
+      return user.save()
+    })
+    // send back 204 and no content if the deletion succeeded
+    .then(() => res.sendStatus(204))
+    // if an error occurs, pass it to the handler
+    .catch(next)
+})
+
 
 module.exports = router
