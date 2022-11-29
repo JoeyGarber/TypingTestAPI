@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Test = require('./app/Models/test')
 const User = require('./app/Models/user')
 
-const db = require('./config/db')
+const db = 'mongodb+srv://admin:1234@typingtestcluster.9espqxm.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(db, {
   useNewUrlParser: true,
